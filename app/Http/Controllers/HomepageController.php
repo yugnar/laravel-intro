@@ -10,6 +10,10 @@ class HomepageController extends Controller
     //     return 'hello-world';
     // }
         public function index(){
-            return view('welcome');
+
+            $account = \App\Models\Account::find(1);
+            //ddd($account);
+
+            return view('homepage.index', ['account' => $account]);
         }
 }

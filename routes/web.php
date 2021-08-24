@@ -17,8 +17,12 @@ use Illuminate\Support\Facades\Route;
 //     return view('welcome');
 // });
 
-Route::get('/', 'HomepageController@index');
+Route::get('/', 'HomepageController@index')->name('homepage');
 
 Route::get('/hello-world', function(){
     return 'hola mundo';
 });
+
+Route::get('/register', 'AuthController@register')->name('auth.register');
+
+Route::post('/register', 'AuthController@saveUser')->name('auth.save-user');
