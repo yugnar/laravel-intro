@@ -21,7 +21,7 @@ class AuthController extends Controller
 
     /**
      * Save the user
-     * 
+     *
      * @return \Illuminate\Http\Response
      */
     public function saveUser(Request $req){
@@ -34,7 +34,7 @@ class AuthController extends Controller
         //$all = $req->all();
         //También se podría entonces: req->input('email');
         //dd($data);;
-        // return view('app.views-folder.name'); 
+        // return view('app.views-folder.name');
         $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -43,8 +43,8 @@ class AuthController extends Controller
 
         Auth::login($user);
 
-        return response()->json($user);
-        //return redirect()->route('homepage');
+        // return response()->json($user);
+        return redirect()->route('homepage');
     }
 
     /**
@@ -60,4 +60,40 @@ class AuthController extends Controller
         return redirect()->route('homepage');
     }
 
+    /**
+     * Show the register bank account page.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function registerBankAccount(Request $req)
+    {
+        return view('auth.register-bank-account');
+    }
+
+
+
+    /**
+     * Save a new bank account.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function saveBankAccount(Request $req)
+    {
+        $data = $req->validate([
+            'name' => 'required'
+        ]);
+
+        $user = Account::create([
+            'name' => $data['name']
+        ]);
+
+        /* // Para que el usuario inicie sesión en el sistema
+
+        Auth::login($user); */
+
+        // Regresa a la página principal
+        return redirect()->route('homepage');
+
+        // return view('app.views-folder.name');
+    }
 }

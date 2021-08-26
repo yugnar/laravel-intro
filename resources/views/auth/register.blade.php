@@ -56,7 +56,7 @@
             </div>
         @endif
         <form action="{{ route('auth.save-user') }}" method="POST">
-        @csrf    
+        @csrf
         <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" name="name" class="form-control" id="name" placeholder="John Doe">

@@ -11,9 +11,9 @@ class HomepageController extends Controller
     // }
         public function index(){
 
-            $account = \App\Models\Account::find(1);
-            //ddd($account);
+            /* $account = \App\Models\Account::find(1);
+            //ddd($account); */
 
-            return view('homepage.index', ['account' => $account]);
+            return view('homepage.index');
         }
 }

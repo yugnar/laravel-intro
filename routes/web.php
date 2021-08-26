@@ -26,3 +26,9 @@ Route::get('/hello-world', function(){
 Route::get('/register', 'AuthController@register')->name('auth.register');
 
 Route::post('/register', 'AuthController@saveUser')->name('auth.save-user');
+
+Route:: get('/logout', 'AuthController@logout')->name('auth.logout');
+
+Route::get('/bank-account', 'AuthController@registerBankAccount')->name('auth.register-bank-account');
+
+Route::post('/bank-account-2', 'AuthController@saveBankAccount')->name('auth.save-bank-account');
