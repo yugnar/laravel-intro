@@ -84,7 +84,10 @@ class AuthController extends Controller
             'name' => 'required'
         ]);
 
+        $id = auth()->user()->id;
+
         $user = Account::create([
+            'user_id' => $id,
             'name' => $data['name']
         ]);
 

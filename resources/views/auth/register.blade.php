@@ -2,7 +2,8 @@
 
 @section('content')
 
-<!-- <body class="c-app flex-row align-items-center">
+<!--
+<body class="c-app flex-row align-items-center">
 <div class="container">
 <div class="row justify-content-center">
 <div class="col-md-6">
@@ -41,7 +42,9 @@
 
 <script src="vendors/@coreui/coreui/js/coreui.bundle.min.js"></script>
 
-</body> -->
+</body>
+
+-->
 
 <div class="row">
     <div class="col-12">

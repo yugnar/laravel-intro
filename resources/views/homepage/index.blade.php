@@ -1,30 +1,46 @@
 @extends('layouts.main')
 
 @section('content')
-<h1>Súper banco</h1>
     <!-- Verificar si hay un usuario con login -->
-    @auth
     {{-- Esta porción de código solo se muestra cuando hay login --}}
-    <p>
-        {{ auth()->user()->email }}
-        <!-- Botón para cerrar sesión -->
-        <a href="{{ route('auth.logout')}}" class="btn btn-primary">Cerrar sesión</a>
-        <a href="{{ route('auth.register-bank-account')}}" class="btn btn-primary">Registrar nueva cuenta bancaria</a>
-    </p>
-
-    <div>
-        <table>
-            <thead>
-                <th>Cuentas bancarias</th>
-            </thead>
-            <tbody>
-                <th>Cuenta</th>
-            </tbody>
-        </table>
+    <div class="container">
+        @auth
+            <h1 class="text-center">Súper banco</h1>
+            <div class="row">
+                <div class="row text-center">
+                    <p> {{ auth()->user()->email }} </p>
+                </div>
+                <div class="row text-center">
+                    <div class="col">
+                        <a href="{{ route('auth.logout')}}" class="btn btn-primary">Cerrar sesión</a>
+                    </div>
+                    <div class="col">
+                        <a href="{{ route('auth.register-bank-account')}}" class="btn btn-primary">Registrar nueva cuenta bancaria</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="row">
+                    <h1 class="text-center"> Cuentas bancarias</h1>
+                </div>
+                @foreach ($accounts as $key => $data)
+                    <div class="row">
+                    <div class="col d-flex justify-content-end">
+                        <h4>{{$data->name}}</h4>
+                    </div>
+                    <div class="col">
+                        <a href="{{route('movements.movements', $data->name)}}" class="btn btn-primary">
+                            crear movimiento
+                        </a>
+                    </div>
+                    </div> 
+                @endforeach
+            </div>
+        @else
+            <p>
+                <!-- Agrega botón para que te mande a la vista de register -->
+                <a href="{{ route('auth.register') }}" class="btn btn-primary">Regístrate aquí</a>
+            </p>
+        @endauth
     </div>
-    @endauth
-    <p>
-        <!-- Agrega botón para que te mande a la vista de register -->
-        <a href="{{ route('auth.register') }}" class="btn btn-primary">Regístrate aquí</a>
-    </p>
 @endsection
