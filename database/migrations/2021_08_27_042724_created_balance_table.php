@@ -13,9 +13,6 @@ class CreatedBalanceTable extends Migration
      */
     public function up()
     {
-        Schema::table('accounts', function (Blueprint $table) {
-            $table->string('user_id');
-        });
 
         Schema::create('balances', function (Blueprint $table) {
             $table->id();
