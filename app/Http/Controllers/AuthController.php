@@ -20,6 +20,38 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
+     /**
+     * Shows the login page
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function login(Request $req)
+    {
+        return view('auth.login');
+    }
+
+   /**
+     * Logins the user
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function loginUser(Request $req)
+    {
+        $credentials = $req->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (Auth::attempt($credentials)) {
+            $req->session()->regenerate();
+            return redirect()->route('homepage');
+        }
+
+        return back()->withErrors([
+            'email' => 'Las credenciales provistas no son correctas',
+        ]);
+    }
+
     /**
      * Save the user
      *

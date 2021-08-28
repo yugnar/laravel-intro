@@ -4,8 +4,8 @@
     <!-- Verificar si hay un usuario con login -->
     {{-- Esta porción de código solo se muestra cuando hay login --}}
     <div class="container">
+    <h1 class="text-center">Súper banco</h1>
         @auth
-            <h1 class="text-center">Súper banco</h1>
             <div class="row">
                 <div class="row text-center">
                     <p> {{ auth()->user()->email }} </p>
@@ -45,6 +45,9 @@
             <p>
                 <!-- Agrega botón para que te mande a la vista de register -->
                 <a href="{{ route('auth.register') }}" class="btn btn-primary">Regístrate aquí</a>
+            </p>
+            <p>
+                <a href="{{ route('auth.login') }}" class="btn btn-primary">Inicio de sesión</a>
             </p>
         @endauth
     </div>
