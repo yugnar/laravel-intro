@@ -33,6 +33,11 @@
                             crear movimiento
                         </a>
                     </div>
+                    <div class="col">
+                        <a href="{{route('history.history', $data->id)}}" class="btn btn-primary">
+                            Ver Historial
+                        </a>
+                    </div>
                     </div> 
                 @endforeach
             </div>

@@ -36,3 +36,5 @@ Route::post('/bank-account-2', 'AuthController@saveBankAccount')->name('auth.sav
 Route::get('/movement/{account}', 'MovementsController@getMovements')->name('movements.movements');
 
 Route::post('/movement-created/{account}', 'MovementsController@createMovement')->name('movements.create');
+
+Route::get('/history/{balance}', 'HistoryController@getHistory')->name('history.history');
